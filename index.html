@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tree Story</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <!-- Owl Carousel Embedded Link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+        integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Embedded Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons Embedded Link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --shade1: #132A13;
+            --shade2: #31572C;
+            --shade3: #4F772D;
+            --shade4: #90A955;
+            --shade5: #ECF39E;
+        }
+
+        .shade1text {
+            color: var(--shade1);
+        }
+
+        .shade5text {
+            color: var(--shade4);
+        }
+
+        .shade2bg {
+            background-color: var(--shade2);
+        }
+
+        .shade3bg {
+            background-color: var(--shade3);
+        }
+
+        .shade4bg {
+            background-color: var(--shade4);
+        }
+
+        .shade5bg {
+            background-color: var(--shade5);
+        }
+
+        .btn-shade1 {
+            background-color: var(--shade1);
+            color: var(--shade5);
+        }
+
+        .btn-shade1:hover {
+            background-color: var(--shade2);
+            color: var(--shade5);
+        }
+
+        .btn-shade2 {
+            background-color: var(--shade2);
+            color: var(--shade5);
+        }
+
+        .btn-shade2:hover {
+            background-color: var(--shade3);
+            color: var(--shade5);
+        }
+
+        body {
+            font-family: "Outfit", sans-serif;
+            background-color: #fbffcd;
+            color: var(--shade1);
+        }
+
+        .topbar {
+            background-color: var(--shade2);
+            color: var(--shade5);
+        }
+
+        .brandimage {
+            -webkit-filter: drop-shadow(5px 5px 5px var(--shade2));
+            filter: drop-shadow(2px 2px 2px var(--shade2));
+        }
+
+        .nav * {
+            transition: all .35s ease;
+        }
+
+        .nav a {
+            padding: .5em .8em;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .nav a::before,
+        .nav a::after {
+            content: '';
+            height: 14px;
+            width: 14px;
+            position: absolute;
+            transition: all .35s ease;
+            opacity: 0;
+        }
+
+        .nav a::before {
+            content: '';
+            right: 0;
+            top: 0;
+            border-top: 3px solid #3E8914;
+            border-right: 3px solid #2E640F;
+            transform: translate(-100%, 50%);
+        }
+
+        .nav a:after {
+            content: '';
+            left: 0;
+            bottom: 0;
+            border-bottom: 3px solid #2E640F;
+            border-left: 3px solid #3E8914;
+            transform: translate(100%, -50%)
+        }
+
+        .nav a:hover:before,
+        .nav a:hover:after {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+
+        .nav a:hover {
+            color: #3DA35D;
+        }
+
+        /* Apply the hover effect to the active class */
+        .nav .nav-link.active {
+            color: #3DA35D;
+        }
+
+        .nav .nav-link.active::before,
+        .nav .nav-link.active::after {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+
+        .offersection {
+            background-image: url(assets/bgimage1.jpg);
+            background-attachment: fixed;
+            color: var(--shade5);
+            text-shadow: 2px 4px 4px #000000;
+        }
+
+        /* styles.css */
+        .image-container {
+            position: relative;
+            width: 100%;
+            /* Adjust as needed */
+            overflow: hidden;
+            border-radius: 1rem;
+            /* Ensure the image doesn't overflow its container */
+        }
+
+        .image {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            /* Smooth transition for the zoom and filter effects */
+        }
+
+        .image-container:hover .image {
+            transform: scale(1.05);
+            filter: grayscale(100%);
+            filter: blur(3px);
+            border-radius: 1rem;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            /* Adjust color as needed */
+        }
+
+        .image-container:hover .overlay {
+            opacity: 1;
+        }
+
+        .text {
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            text-shadow: 2px 4px 4px #000000;
+        }
+
+        .whyus {
+            font-size: 100px;
+        }
+
+        .farmersection {
+            background-color: var(--shade5);
+            color: var(--shade1);
+        }
+
+        .blockquote-custom {
+            position: relative;
+        }
+
+        .blockquote-custom-icon {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .joinimage {
+            transition: filter 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .joinimage:hover {
+            -webkit-filter: drop-shadow(5px 5px 5px #000000);
+            filter: drop-shadow(3px 3px 3px #000000);
+        }
+
+        .footershade1 {
+            background-color: var(--shade2);
+            color: var(--shade5);
+        }
+
+        .footershade2 {
+            background-color: var(--shade1);
+            color: var(--shade5);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid text-center topbar">
+        <!-- Appear on phone screen -->
+        <div class="d-block d-md-none">
+            <div id="topbar" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="col m-1">
+                            Free Shipping above ₹499 | All India Delivery
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            Explore<br> Large Plants
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            Organic Fertilisers to Boost Plant Growth
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Appear on laptop screen -->
+        <div class="d-none d-md-block">
+            <div class="row">
+                <div class="col m-1">
+                    Free Shipping above ₹499 | All India Delivery
+                </div>
+                <div class="col m-1">
+                    Explore Large Plants
+                </div>
+                <div class="col m-1">
+                    Organic Fertilisers to Boost Plant Growth
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg shade1text">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="assets/10237112.png" class="brandimage" alt="Tree Story" width="150">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">PLANTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">SEEDS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">PLANT CARE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">GIFTING</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">BLOGS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">OFFERS</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control bg-transparent border-success" placeholder="Search"
+                            aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-success" type="button" id="button-addon2">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                    <i class="bi bi-person mx-2 fs-3"></i>
+                    <i class="bi bi-bag-heart mx-2 fs-3"></i>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex justify-content-center align-items-center pt-5">
+                <div class="row row-cols-1">
+                    <div class="col">
+                        <h1 class="mt-3">Welcome to <span style="color: var(--shade2);">Tree Story</span>: Sow Seeds of
+                            Change!
+                        </h1>
+                    </div>
+                    <div class="col">
+                        <p class="justify-text-evenly">Welcome to Tree Story, where each plant tells a tale of nature's
+                            beauty and vitality. At Tree
+                            Story, we believe that plants are not just decorative pieces but essential companions that
+                            purify
+                            the air, uplift our spirits, and transform our spaces. Our diverse collection, sourced
+                            sustainably,
+                            offers something for every home and heart. Join us in nurturing a greener, healthier world,
+                            and let
+                            your story grow with Tree Story today!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col text-center d-none d-md-block">
+                <img src="assets/GIF Image 1.gif" class="img-fluid brandimage" oncontextmenu="return false;"
+                    draggable="false">
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-center py-5 offersection">
+        <h3 class="mb-4">Check Out Our Latest Offers!</h3>
+        <button class="btn btn-success">View all offers!</button>
+    </div>
+    <div class="container my-5">
+        <h1 class="my-5">Our <span style="color: var(--shade2);">Best Picks!</span></h1>
+        <div class="row text-center">
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="image-container">
+                    <img src="assets/bpplants.jpg" alt="Plants" class="image rounded-3">
+                    <div class="overlay">
+                        <div class="text fs-1">Plants</div>
+                    </div>
+                </div>
+                <h4 class="mt-2">Plants</h4>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="image-container">
+                    <img src="assets/bpseeds.jpg" alt="Seeds" class="image rounded-3">
+                    <div class="overlay">
+                        <div class="text fs-1">Seeds</div>
+                    </div>
+                </div>
+                <h4 class="mt-2">Seeds</h4>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="image-container">
+                    <img src="assets/bppots.jpg" alt="Pots and Planters" class="image rounded-3">
+                    <div class="overlay">
+                        <div class="text fs-1">Pots and Planters</div>
+                    </div>
+                </div>
+                <h4 class="mt-2">Pots and Planters</h4>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
+                <div class="image-container">
+                    <img src="assets/bpfertilizer.jpg" alt="Soil and Fertilizers" class="image rounded-3">
+                    <div class="overlay">
+                        <div class="text fs-1">Soil and Fertilizers</div>
+                    </div>
+                </div>
+                <h4 class="mt-2">Soil and Fertilizers</h4>
+            </div>
+        </div>
+    </div>
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="5000">
+                <img src="assets/carouselimage1.jpg" class="d-block w-100" alt="..." oncontextmenu="return false;">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="assets/carouselimage2.jpg" class="d-block w-100" alt="..." oncontextmenu="return false;">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="assets/carouselimage3.jpg" class="d-block w-100" alt="..." oncontextmenu="return false;">
+            </div>
+        </div>
+    </div>
+    <div class="container my-5 ">
+        <h1 class="my-5">Why <span style="color: var(--shade2);">Us</span>?</h1>
+        <div class="row text-center">
+            <div class="col-lg-4 col-sm-12 mb-4">
+                <img src="assets/packageicon.png" width="100px" oncontextmenu="return false;" draggable="false">
+                <h4 class="my-4">Secure and<br>Recyclable Packaging</h4>
+            </div>
+            <div class="col-lg-4 col-sm-12 mb-4">
+                <img src="assets/productreturn.png" width="100px" oncontextmenu="return false;" draggable="false">
+                <h4 class="my-4">Free Replacements<br>if Damaged</h4>
+            </div>
+            <div class="col-lg-4 col-sm-12 mb-4">
+                <img src="assets/wateringcan.png" width="100px" oncontextmenu="return false;" draggable="false">
+                <h4 class="my-4">Free Watering<br>Cans</h4>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="container-fluid text-center py-5 farmersection">
+        <h3 class="mb-4">Experience the magic of growing plants</h3>
+        <div class="container">
+            <p>Tree Story is here to inspire you to surround yourself with plants, offering a new
+                perspective on life and helping you connect with nature. Every plant you purchase is carefully packed
+                and shipped from our 25-acre farm straight to your doorstep.</p>
+        </div>
+    </div>
+    <div class="container my-5">
+        <h1 class="mb-5">Happy <span style="color: var(--shade2);">Plant Parents</span></h1>
+        <div class="container">
+            <div class="owl-carousel owl-theme">
+                <div class="item" style="width:300px">
+                    <div class="card h-100 text-center bg-transparent border-0">
+                        <div class="card-header bg-transparent d-flex justify-content-center" style="border: none;">
+                            <img src="assets/testimonial1.jpg" class="rounded-circle" style="width: 100px;">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text list-group-item text-justify">Ever since I discovered
+                                Tree Story, my garden has transformed into a lush paradise. The quality of the plants is
+                                exceptional, and they always arrive in perfect condition. My favorite is the rare orchid
+                                I purchased; it's thriving beautifully!
+                            </p>
+                            <p class="card-title list-group-item fst-italic">- Karan Malhotra,
+                                Budding Gardener</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item" style="width:300px">
+                    <div class="card h-100 text-center bg-transparent border-0">
+                        <div class="card-header bg-transparent d-flex justify-content-center" style="border: none;">
+                            <img src="assets/testimonial2.jpg" class="rounded-circle" style="width: 100px;">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text list-group-item">The premium soil mix from
+                                Tree Story is a game-changer. My plants have never looked healthier or grown faster. The
+                                soil has the perfect balance of nutrients and drainage, making it ideal for both my
+                                indoor and outdoor plants.
+                            </p>
+                            <p class="card-title list-group-item fst-italic">- Rajesh Kumar,
+                                Urban Farmer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item" style="width:300px">
+                    <div class="card h-100 text-center bg-transparent border-0">
+                        <div class="card-header bg-transparent d-flex justify-content-center" style="border: none;">
+                            <img src="assets/testimonial3.jpg" class="rounded-circle" style="width: 100px;">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text list-group-item">I am absolutely in love
+                                with the decorative pots I bought from Tree Story. They are not only stylish and durable
+                                but also come in a variety of sizes that fit perfectly with all my plants. My home looks
+                                so much more vibrant now!
+                            </p>
+                            <p class="card-title list-group-item fst-italic">- Priya Singh,
+                                Interior Designer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item" style="width:300px">
+                    <div class="card h-100 text-center bg-transparent border-0">
+                        <div class="card-header bg-transparent d-flex justify-content-center" style="border: none;">
+                            <img src="assets/testimonial4.jpg" class="rounded-circle" style="width: 100px;">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text list-group-item">Tree Story's slow-release fertilizer has completely
+                                revitalized my flower beds. The blooms are more vibrant and last longer than ever
+                                before. I'm amazed at the difference it has made in such a short time!
+                            </p>
+                            <p class="card-title list-group-item fst-italic">- Kavita Desai, Flower Gardener</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container my-5">
+        <h2 class="mb-5">About <span style="color: var(--shade2);">Us</span></h2>
+        <p>Tree Story is India's leading and most trusted online plant nursery, dedicated to fulfilling all your
+            gardening needs. Our online nursery offers an extensive range of high-quality exotic indoor plants, outdoor
+            plants, flowering plants, and succulents. Additionally, Tree Story specializes in organic vegetable, herb,
+            and flower seeds. We also provide trendy, premium planters, top-notch soil and fertilizers, and a
+            comprehensive selection of gardening tools essential for every home gardener.
+        </p>
+        <p>
+            At Tree Story, we believe we are more than just a garden store; we are your partner in your gardening
+            journey. We understand that plants help people grow, and we are committed to nurturing this growth. We
+            embrace the magic of cultivating plants, discovering our inner selves in the process, and cherishing moments
+            like your first new leaf, your first bloom, or your first sprouted seed.
+        </p>
+        <p>
+            Tree Story takes pride in being more than just an online garden store or plant nursery. We are your trusted
+            friend, dedicated to helping both you and your garden thrive. With our lifetime gardening support, we are
+            here to guide you through all your gardening adventures.
+        </p>
+    </div>
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-6 text-center">
+                <img src="assets/joinclub.jpeg" class="img-fluid rounded-4 joinimage" style="width: 300px;">
+            </div>
+            <div class="col-lg-6 d-flex justify-content-center align-items-center pt-5">
+                <div class="row row-cols-1">
+                    <div class="col">
+                        <h1 class="my-3">Join Our <span style="color: var(--shade2);">Plant Parivar</span></h1>
+                    </div>
+                    <div class="col">
+                        <p class="my-3">Purchasing products from Tree Story earns you credits, which can
+                            be redeemed for various offers and discounts.</p>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-shade1 mr-2 my-3">Learn More</button>
+                        <button class="btn btn-shade2 mx-2 my-3">Refer a Friend</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-center topbar">
+        <!-- Appear on phone screen -->
+        <div class="d-block d-md-none">
+            <div id="topbar" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="col m-1">
+                            Mumbai
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            Ahmedabad
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            Pune
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            Delhi
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            Bangalore
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            Hyderabad
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            Chennai
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            Kolkata
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Appear on laptop screen -->
+        <div class="d-none d-md-block">
+            <div class="row">
+                <div class="col m-1">
+                    Mumbai
+                </div>
+                <div class="col m-1">
+                    Ahmedabad
+                </div>
+                <div class="col m-1">
+                    Pune
+                </div>
+                <div class="col m-1">
+                    Delhi
+                </div>
+                <div class="col m-1">
+                    Bangalore
+                </div>
+                <div class="col m-1">
+                    Hyderabad
+                </div>
+                <div class="col m-1">
+                    Chennai
+                </div>
+                <div class="col m-1">
+                    Kolkata
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="text-center text-white footershade2 pt-3">
+        <div class="text-center container text-md-start pt-3">
+            <div class="row">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold">Social Media</h6>
+                    <hr class="mb-3 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; background-color: var(--shade5); height: 3px" />
+                    <div class="text-center text-center">
+                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                                class="bi bi-facebook"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                                class="bi bi-twitter-x"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                                class="bi bi-google"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                                class="bi bi-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                                class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold">Products</h6>
+                    <hr class="mb-3 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; background-color: var(--shade5); height: 3px" />
+                    <p>
+                        <a href="#" class="text-white" style="text-decoration: none;">Plants</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-white" style="text-decoration: none;">Seeds</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-white" style="text-decoration: none;">Pots and Planters</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-white" style="text-decoration: none;">Fertilizers</a>
+                    </p>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold">Customer Care</h6>
+                    <hr class="mb-3 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; background-color: var(--shade5); height: 3px" />
+                    <p>
+                        <a href="#!" class="text-white" style="text-decoration: none;">Your Account</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-white" style="text-decoration: none;">Track Your Order</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-white" style="text-decoration: none;">Privacy Policy</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-white" style="text-decoration: none;">Help</a>
+                    </p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h6 class="text-uppercase fw-bold">Contact</h6>
+                    <hr class="mb-3 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; background-color: var(--shade5); height: 3px" />
+                    <p><i class="bi bi-house mr-3"></i> 123, Anywhere St., Any City - 999999</p>
+                    <p><i class="bi bi-envelope mr-3"></i> treestory@gmail.com</p>
+                    <p><i class="bi bi-phone mr-3"></i> + 01 234 567 88</p>
+                    <p><i class="bi bi-printer mr-3"></i> + 01 234 567 89</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+            © 2024 Copyright:
+            <a class="text-white text-decoration-none" href="index.html">Tree Story</a>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script>
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            center: true,
+            loop: true,
+            margin: 100,
+            nav: false,
+            autoWidth: true,
+            responsiveClass: true,
+            dots: false,
+            responsive: {
+                0: {
+                    items: 1,
+                },
+                600: {
+                    items: 3,
+                },
+                1000: {
+                    items: 4,
+                },
+                1024: {
+                    items: 3,
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
