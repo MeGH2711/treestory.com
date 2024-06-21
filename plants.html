@@ -1,0 +1,925 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tree Story</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <!-- Embedded Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons Embedded Link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --shade1: #132A13;
+            --shade2: #31572C;
+            --shade3: #4F772D;
+            --shade4: #90A955;
+            --shade5: #ECF39E;
+        }
+
+        .text-justify {
+            text-align: justify;
+        }
+
+        .shade1text {
+            color: var(--shade1);
+        }
+
+        .shade5text {
+            color: var(--shade4);
+        }
+
+        .shade2bg {
+            background-color: var(--shade2);
+        }
+
+        .shade3bg {
+            background-color: var(--shade3);
+        }
+
+        .shade4bg {
+            background-color: var(--shade4);
+        }
+
+        .shade5bg {
+            background-color: var(--shade5);
+        }
+
+        .btn-shade1 {
+            background-color: var(--shade1);
+            color: var(--shade5);
+        }
+
+        .btn-shade1:hover {
+            background-color: var(--shade2);
+            color: var(--shade5);
+        }
+
+        .btn-shade2 {
+            background-color: var(--shade2);
+            color: var(--shade5);
+        }
+
+        .btn-shade2:hover {
+            background-color: var(--shade3);
+            color: var(--shade5);
+        }
+
+        body {
+            font-family: "Outfit", sans-serif;
+            background-color: #fbffcd;
+            color: var(--shade1);
+        }
+
+        .topbar {
+            background-color: var(--shade2);
+            color: var(--shade5);
+        }
+
+        .brandimage {
+            -webkit-filter: drop-shadow(5px 5px 5px var(--shade2));
+            filter: drop-shadow(2px 2px 2px var(--shade2));
+        }
+
+        .nav * {
+            transition: all .35s ease;
+        }
+
+        .nav a {
+            padding: .5em .8em;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .nav a::before,
+        .nav a::after {
+            content: '';
+            height: 14px;
+            width: 14px;
+            position: absolute;
+            transition: all .35s ease;
+            opacity: 0;
+        }
+
+        .nav a::before {
+            content: '';
+            right: 0;
+            top: 0;
+            border-top: 3px solid #3E8914;
+            border-right: 3px solid #2E640F;
+            transform: translate(-100%, 50%);
+        }
+
+        .nav a:after {
+            content: '';
+            left: 0;
+            bottom: 0;
+            border-bottom: 3px solid #2E640F;
+            border-left: 3px solid #3E8914;
+            transform: translate(100%, -50%)
+        }
+
+        .nav a:hover:before,
+        .nav a:hover:after {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+
+        .nav a:hover {
+            color: #3DA35D;
+        }
+
+        .nav .nav-link.active {
+            color: #3DA35D;
+        }
+
+        .nav .nav-link.active::before,
+        .nav .nav-link.active::after {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+
+        .footershade1 {
+            background-color: var(--shade2);
+            color: var(--shade5);
+        }
+
+        .footershade2 {
+            background-color: var(--shade1);
+            color: var(--shade5);
+        }
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+
+        .productimage {
+            object-fit: cover;
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+
+        .image-container:hover .productimage {
+            transform: scale(1.05);
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid text-center topbar">
+        <!-- Appear on phone screen -->
+        <div class="d-block d-md-none">
+            <div id="topbar" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="col m-1">
+                            Free Shipping above ₹499 | All India Delivery
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            Explore<br> Large Plants
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            Organic Fertilisers to Boost Plant Growth
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Appear on laptop screen -->
+        <div class="d-none d-md-block">
+            <div class="row">
+                <div class="col m-1">
+                    Free Shipping above ₹499 | All India Delivery
+                </div>
+                <div class="col m-1">
+                    Explore Large Plants
+                </div>
+                <div class="col m-1">
+                    Organic Fertilisers to Boost Plant Growth
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg shade1text">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/10237112.png" class="brandimage" alt="Tree Story" width="150">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.html">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="plants.html">PLANTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">SEEDS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">PLANT CARE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">GIFTING</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">BLOGS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">OFFERS</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control bg-transparent border-success" placeholder="Search"
+                            aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-success" type="button" id="button-addon2">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                    <i class="bi bi-person mx-2 fs-3"></i>
+                    <i class="bi bi-bag-heart mx-2 fs-3"></i>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item" data-bs-interval="10000">
+                <img src="assets/plantspage/carouselimage1.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item active" data-bs-interval="10000">
+                <img src="assets/plantspage/carouselimage2.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="mt-3"><span style="color: var(--shade1);">Plants</span></h1>
+        <p>Plants are important for a house's interior as they improve air quality by filtering toxins and adding
+            oxygen, while also enhancing aesthetics and creating a calming, natural environment.</p>
+    </div>
+    <div class="container my-4">
+        <div class="row my-3">
+            <div class="col-lg-4">
+                <label for="producttype" class="form-label">Price Range</label>
+                <select class="form-select bg-transparent border-dark" aria-label="Default select example">
+                    <option selected>All</option>
+                    <option value="1">₹ 100 - ₹ 300</option>
+                    <option value="2">₹ 301 - ₹ 500</option>
+                    <option value="3">₹ 501 - ₹ 800</option>
+                    <option value="4">₹ 801 - ₹ 1,100</option>
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <label for="producttype" class="form-label">Type of Plant</label>
+                <select class="form-select bg-transparent border-dark" aria-label="Default select example">
+                    <option selected>All</option>
+                    <option value="1">Air Plant</option>
+                    <option value="2">Cacti & Succulents</option>
+                    <option value="3">Climbers</option>
+                    <option value="4">Creepers/Groundcovers</option>
+                    <option value="5">Flowering Plants</option>
+                    <option value="6">Focal Plants</option>
+                    <option value="7">Fruit Plant</option>
+                    <option value="8">Ground Covers</option>
+                    <option value="9">Hanging Basket Plants</option>
+                    <option value="10">Hedge Plants</option>
+                    <option value="11">Medicinal Plants</option>
+                    <option value="12">Moss Stick Plants</option>
+                    <option value="13">Screen Plants</option>
+                    <option value="14">Shrub Plants</option>
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <label for="producttype" class="form-label">Ratings</label>
+                <select id="producttype" class="form-select bg-transparent border-dark"
+                    aria-label="Default select example">
+                    <option selected>All</option>
+                    <option value="1">0-1 Stars</option>
+                    <option value="2">1-2 Stars</option>
+                    <option value="3">2-3 Stars</option>
+                    <option value="3">3-4 Stars</option>
+                    <option value="3">4-5 Stars</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card bg-transparent border-0 my-3" style="width: 18rem;">
+                    <div class="image-container">
+                        <img src="assets/plantspage/plants/plant1.jpg" alt="Plants" class="productimage card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Peace Lily Plant</h5>
+                        <p class="card-text"><span class="text-decoration-line-through orignal-price">₹ 399</span>
+                            <span class="card-text offer-price fs-5">₹ 299</span>
+                        </p>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star"></span>
+                        <span>4.2</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-shade1 container"><i class="bi bi-cart2"></i> Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card bg-transparent border-0 my-3" style="width: 18rem;">
+                    <div class="image-container">
+                        <img src="assets/plantspage/plants/plant2.jpg" alt="Plants" class="productimage card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Bamboo Palm Plant</h5>
+                        <p class="card-text"><span class="text-decoration-line-through orignal-price">₹ 499</span>
+                            <span class="card-text offer-price fs-5">₹ 399</span>
+                        </p>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span>4.8</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-shade1 container"><i class="bi bi-cart2"></i> Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card bg-transparent border-0 my-3" style="width: 18rem;">
+                    <div class="image-container">
+                        <img src="assets/plantspage/plants/plant3.jpg" alt="Plants" class="productimage card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Jade Plant Mini</h5>
+                        <p class="card-text"><span class="text-decoration-line-through orignal-price">₹ 299</span>
+                            <span class="card-text offer-price fs-5">₹ 249</span>
+                        </p>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span>4.9</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-shade1 container"><i class="bi bi-cart2"></i> Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card bg-transparent border-0 my-3" style="width: 18rem;">
+                    <div class="image-container">
+                        <img src="assets/plantspage/plants/plant4.jpg" alt="Plants" class="productimage card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Areca Palm Plant</h5>
+                        <p class="card-text"><span class="text-decoration-line-through orignal-price">₹ 1,499</span>
+                            <span class="card-text offer-price fs-5">₹ 1,049</span>
+                        </p>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-half"></span>
+                        <span>4.4</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-shade1 container"><i class="bi bi-cart2"></i> Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card bg-transparent border-0 my-3" style="width: 18rem;">
+                    <div class="image-container">
+                        <img src="assets/plantspage/plants/plant5.jpg" alt="Fiddle Leaf Fig"
+                            class="productimage card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Fiddle Leaf Fig</h5>
+                        <p class="card-text"><span class="text-decoration-line-through orignal-price">₹ 599</span>
+                            <span class="card-text offer-price fs-5">₹ 499</span>
+                        </p>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-half"></span>
+                        <span>4.4</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-shade1 container"><i class="bi bi-cart2"></i> Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card bg-transparent border-0 my-3" style="width: 18rem;">
+                    <div class="image-container">
+                        <img src="assets/plantspage/plants/plant6.jpg" alt="Snake Plant"
+                            class="productimage card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Snake Plant</h5>
+                        <p class="card-text"><span class="text-decoration-line-through orignal-price">₹ 399</span>
+                            <span class="card-text offer-price fs-5">₹ 299</span>
+                        </p>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-half"></span>
+                        <span>4.6</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-shade1 container"><i class="bi bi-cart2"></i> Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card bg-transparent border-0 my-3" style="width: 18rem;">
+                    <div class="image-container">
+                        <img src="assets/plantspage/plants/plant7.jpg" alt="Monstera Plant"
+                            class="productimage card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Monstera Plant</h5>
+                        <p class="card-text"><span class="text-decoration-line-through orignal-price">₹ 799</span>
+                            <span class="card-text offer-price fs-5">₹ 649</span>
+                        </p>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-half"></span>
+                        <span>4.5</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-shade1 container"><i class="bi bi-cart2"></i> Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card bg-transparent border-0 my-3" style="width: 18rem;">
+                    <div class="image-container">
+                        <img src="assets/plantspage/plants/plant8.jpg" alt="Money Tree Plant"
+                            class="productimage card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Money Tree Plant</h5>
+                        <p class="card-text"><span class="text-decoration-line-through orignal-price">₹ 599</span>
+                            <span class="card-text offer-price fs-5">₹ 499</span>
+                        </p>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-half"></span>
+                        <span class="bi bi-star"></span>
+                        <span>4.3</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-shade1 container"><i class="bi bi-cart2"></i> Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card bg-transparent border-0 my-3" style="width: 18rem;">
+                    <div class="image-container">
+                        <img src="assets/plantspage/plants/plant9.jpg" alt="ZZ Plant"
+                            class="productimage card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">ZZ Plant</h5>
+                        <p class="card-text"><span class="text-decoration-line-through orignal-price">₹ 349</span>
+                            <span class="card-text offer-price fs-5">₹ 279</span>
+                        </p>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star"></span>
+                        <span>4.0</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-shade1 container"><i class="bi bi-cart2"></i> Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card bg-transparent border-0 my-3" style="width: 18rem;">
+                    <div class="image-container">
+                        <img src="assets/plantspage/plants/plant10.jpg" alt="Spider Plant"
+                            class="productimage card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Spider Plant</h5>
+                        <p class="card-text"><span class="text-decoration-line-through orignal-price">₹ 249</span>
+                            <span class="card-text offer-price fs-5">₹ 199</span>
+                        </p>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star"></span>
+                        <span>4.0</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-shade1 container"><i class="bi bi-cart2"></i> Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card bg-transparent border-0 my-3" style="width: 18rem;">
+                    <div class="image-container">
+                        <img src="assets/plantspage/plants/plant11.jpg" alt="Peace Lily Plant"
+                            class="productimage card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Peace Lily Plant</h5>
+                        <p class="card-text"><span class="text-decoration-line-through orignal-price">₹ 299</span>
+                            <span class="card-text offer-price fs-5">₹ 249</span>
+                        </p>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star"></span>
+                        <span>4.1</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-shade1 container"><i class="bi bi-cart2"></i> Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card bg-transparent border-0 my-3" style="width: 18rem;">
+                    <div class="image-container">
+                        <img src="assets/plantspage/plants/plant12.jpg" alt="Rubber Plant"
+                            class="productimage card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Rubber Plant</h5>
+                        <p class="card-text"><span class="text-decoration-line-through orignal-price">₹ 449</span>
+                            <span class="card-text offer-price fs-5">₹ 379</span>
+                        </p>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star"></span>
+                        <span>4.2</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-shade1 container"><i class="bi bi-cart2"></i> Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card bg-transparent border-0 my-3" style="width: 18rem;">
+                    <div class="image-container">
+                        <img src="assets/plantspage/plants/plant13.jpg" alt="Boston Fern Plant"
+                            class="productimage card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Boston Fern Plant</h5>
+                        <p class="card-text"><span class="text-decoration-line-through orignal-price">₹ 349</span>
+                            <span class="card-text offer-price fs-5">₹ 279</span>
+                        </p>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star"></span>
+                        <span>4.0</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-shade1 container"><i class="bi bi-cart2"></i> Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card bg-transparent border-0 my-3" style="width: 18rem;">
+                    <div class="image-container">
+                        <img src="assets/plantspage/plants/plant14.jpg" alt="Jade Plant"
+                            class="productimage card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Jade Plant</h5>
+                        <p class="card-text"><span class="text-decoration-line-through orignal-price">₹ 299</span>
+                            <span class="card-text offer-price fs-5">₹ 249</span>
+                        </p>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star"></span>
+                        <span>4.1</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-shade1 container"><i class="bi bi-cart2"></i> Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card bg-transparent border-0 my-3" style="width: 18rem;">
+                    <div class="image-container">
+                        <img src="assets/plantspage/plants/plant15.jpg" alt="Philodendron Plant"
+                            class="productimage card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Philodendron Plant</h5>
+                        <p class="card-text"><span class="text-decoration-line-through orignal-price">₹ 399</span>
+                            <span class="card-text offer-price fs-5">₹ 329</span>
+                        </p>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star"></span>
+                        <span>4.0</span>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-shade1 container"><i class="bi bi-cart2"></i> Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container my-5">
+        <h1 class="mb-3"><span style="color: var(--shade2);">FAQ</span>'s</h1>
+        <div class="accordion accordion-flush" id="faq">
+            <div class="accordion-item bg-transparent">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-transparent" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        How often should I water my indoor plants?
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body bg-transparent">
+                        The frequency of watering indoor plants depends on the type of plant, the pot size, and
+                        environmental conditions such as light and humidity. A general rule of thumb is to water when
+                        the top inch of soil is dry. Some plants prefer consistently moist soil, while others like
+                        succulents need less frequent watering.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item bg-transparent">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-transparent" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        What kind of light do indoor plants need?
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body bg-transparent">
+                        Most indoor plants thrive in bright, indirect light. However, the specific light requirements
+                        vary by plant species. For instance, succulents and cacti prefer direct sunlight, while ferns
+                        and snake plants can tolerate lower light conditions.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item bg-transparent">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-transparent" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        How can I prevent my plants from getting pests?
+                    </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body bg-transparent">
+                        To prevent pests, keep your plants healthy by providing proper care, such as adequate watering,
+                        light, and nutrients. Inspect new plants for pests before bringing them indoors, and regularly
+                        check your existing plants for signs of infestation. Isolate affected plants and treat them with
+                        natural or chemical pest control methods as needed.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item bg-transparent">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-transparent" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                        Why are the leaves on my plant turning yellow?
+                    </button>
+                </h2>
+                <div id="flush-collapseFour" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body bg-transparent">
+                        Yellow leaves can be caused by various factors, including overwatering, underwatering, poor
+                        drainage, lack of light, nutrient deficiencies, or pest infestations. Evaluate the plant's care
+                        conditions and make necessary adjustments to address the issue.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item bg-transparent">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-transparent" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                        How do I fertilize my indoor plants?
+                    </button>
+                </h2>
+                <div id="flush-collapseFive" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body bg-transparent">
+                        Use a balanced, water-soluble fertilizer specifically formulated for indoor plants. Follow the
+                        instructions on the fertilizer package for the correct dilution and frequency. Typically,
+                        fertilizing once a month during the growing season (spring and summer) is sufficient, while
+                        reducing or stopping fertilization during the dormant season (fall and winter).
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-center topbar">
+        <!-- Appear on phone screen -->
+        <div class="d-block d-md-none">
+            <div id="topbar" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="col m-1">
+                            Mumbai
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            Ahmedabad
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            Pune
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            Delhi
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            Bangalore
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            Hyderabad
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            Chennai
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="col m-1">
+                            Kolkata
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Appear on laptop screen -->
+        <div class="d-none d-md-block">
+            <div class="row">
+                <div class="col m-1">
+                    Mumbai
+                </div>
+                <div class="col m-1">
+                    Ahmedabad
+                </div>
+                <div class="col m-1">
+                    Pune
+                </div>
+                <div class="col m-1">
+                    Delhi
+                </div>
+                <div class="col m-1">
+                    Bangalore
+                </div>
+                <div class="col m-1">
+                    Hyderabad
+                </div>
+                <div class="col m-1">
+                    Chennai
+                </div>
+                <div class="col m-1">
+                    Kolkata
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="text-center text-white footershade2 pt-3">
+        <div class="text-center container text-md-start pt-3">
+            <div class="row">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold">Social Media</h6>
+                    <hr class="mb-3 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; background-color: var(--shade5); height: 3px" />
+                    <div class="text-center text-center">
+                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                                class="bi bi-facebook"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                                class="bi bi-twitter-x"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                                class="bi bi-google"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                                class="bi bi-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-floating m-1" class="text-white" role="button"><i
+                                class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold">Products</h6>
+                    <hr class="mb-3 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; background-color: var(--shade5); height: 3px" />
+                    <p>
+                        <a href="#" class="text-white" style="text-decoration: none;">Plants</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-white" style="text-decoration: none;">Seeds</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-white" style="text-decoration: none;">Pots and Planters</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-white" style="text-decoration: none;">Fertilizers</a>
+                    </p>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold">Customer Care</h6>
+                    <hr class="mb-3 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; background-color: var(--shade5); height: 3px" />
+                    <p>
+                        <a href="#!" class="text-white" style="text-decoration: none;">Your Account</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-white" style="text-decoration: none;">Track Your Order</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-white" style="text-decoration: none;">Privacy Policy</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-white" style="text-decoration: none;">Help</a>
+                    </p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h6 class="text-uppercase fw-bold">Contact</h6>
+                    <hr class="mb-3 mt-0 d-inline-block mx-auto"
+                        style="width: 60px; background-color: var(--shade5); height: 3px" />
+                    <p><i class="bi bi-house mr-3"></i> 123, Anywhere St., Any City - 999999</p>
+                    <p><i class="bi bi-envelope mr-3"></i> treestory@gmail.com</p>
+                    <p><i class="bi bi-phone mr-3"></i> + 01 234 567 88</p>
+                    <p><i class="bi bi-printer mr-3"></i> + 01 234 567 89</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+            Copyright © 2024 <a class="text-white text-decoration-none" href="index.html">
+                Tree Story.</a> All rights reserved.
+        </div>
+
+        <div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0.2);">
+            <sub>The company featured here is entirely fictional. It's been created solely to showcase the
+                functionality and features of our website. We hope you find the demo useful and informative! And the
+                images used entirely are generated using AI.</sub>
+        </div>
+
+        <div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0.2);">
+            <sub>Designed and Developed with &#10084; by <a href="https://megh2711.github.io/meghthebaadal.com/"
+                    style="text-decoration: none; color: #fff;"><b>Megh
+                        Patel</b></a></sub>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

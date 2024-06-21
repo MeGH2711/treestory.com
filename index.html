@@ -41,6 +41,10 @@
             --shade5: #ECF39E;
         }
 
+        .text-justify {
+            text-align: justify;
+        }
+
         .shade1text {
             color: var(--shade1);
         }
@@ -161,7 +165,7 @@
         }
 
         .offersection {
-            background-image: url(assets/bgimage1.jpg);
+            background-image: url(assets/homepage/bgimage1.jpg);
             background-attachment: fixed;
             color: var(--shade5);
             text-shadow: 2px 4px 4px #000000;
@@ -279,7 +283,8 @@
                     </div>
                     <div class="carousel-item">
                         <div class="col m-1">
-                            Explore<br> Large Plants
+                            <a class="text-decoration-none" style="color: var(--shade5);" href="plants.html">Explore<br>
+                                Large Plants</a>
                         </div>
                     </div>
                     <div class="carousel-item">
@@ -297,7 +302,8 @@
                     Free Shipping above ₹499 | All India Delivery
                 </div>
                 <div class="col m-1">
-                    Explore Large Plants
+                    <a class="text-decoration-none" style="color: var(--shade5);" href="plants.html">Explore Large
+                        Plants</a>
                 </div>
                 <div class="col m-1">
                     Organic Fertilisers to Boost Plant Growth
@@ -307,7 +313,7 @@
     </div>
     <nav class="navbar navbar-expand-lg shade1text">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.html">
                 <img src="assets/10237112.png" class="brandimage" alt="Tree Story" width="150">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -318,10 +324,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">HOME</a>
+                        <a class="nav-link active" aria-current="page" href="index.html">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">PLANTS</a>
+                        <a class="nav-link" aria-current="page" href="plants.html">PLANTS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">SEEDS</a>
@@ -363,20 +369,18 @@
                         </h1>
                     </div>
                     <div class="col">
-                        <p class="justify-text-evenly">Welcome to Tree Story, where each plant tells a tale of nature's
-                            beauty and vitality. At Tree
-                            Story, we believe that plants are not just decorative pieces but essential companions that
-                            purify
-                            the air, uplift our spirits, and transform our spaces. Our diverse collection, sourced
-                            sustainably,
-                            offers something for every home and heart. Join us in nurturing a greener, healthier world,
-                            and let
-                            your story grow with Tree Story today!</p>
+                        <p class="text-justify">
+                            Welcome to Tree Story, where each plant tells a tale of nature's beauty and vitality. At
+                            TreeStory, we believe that plants are not just decorative pieces but essential companions
+                            that purify the air, uplift our spirits, and transform our spaces. Our diverse collection,
+                            sourced sustainably, offers something for every home and heart. Join us in nurturing a
+                            greener, healthier world, and let your story grow with Tree Story today!
+                        </p>
                     </div>
                 </div>
             </div>
             <div class="col text-center d-none d-md-block">
-                <img src="assets/GIF Image 1.gif" class="img-fluid brandimage" oncontextmenu="return false;"
+                <img src="assets/homepage/landinggif.gif" class="img-fluid brandimage" oncontextmenu="return false;"
                     draggable="false">
             </div>
         </div>
@@ -389,17 +393,19 @@
         <h1 class="my-5">Our <span style="color: var(--shade2);">Best Picks!</span></h1>
         <div class="row text-center">
             <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-                <div class="image-container">
-                    <img src="assets/bpplants.jpg" alt="Plants" class="image rounded-3">
-                    <div class="overlay">
-                        <div class="text fs-1">Plants</div>
+                <a class="text-decoration-none" style="color: var(--shade5);" href="plants.html">
+                    <div class="image-container">
+                        <img src="assets/homepage/bpplants.jpg" alt="Plants" class="image rounded-3">
+                        <div class="overlay">
+                            <div class="text fs-1">Plants</div>
+                        </div>
                     </div>
-                </div>
+                </a>
                 <h4 class="mt-2">Plants</h4>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
                 <div class="image-container">
-                    <img src="assets/bpseeds.jpg" alt="Seeds" class="image rounded-3">
+                    <img src="assets/homepage/bpseeds.jpg" alt="Seeds" class="image rounded-3">
                     <div class="overlay">
                         <div class="text fs-1">Seeds</div>
                     </div>
@@ -408,7 +414,7 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
                 <div class="image-container">
-                    <img src="assets/bppots.jpg" alt="Pots and Planters" class="image rounded-3">
+                    <img src="assets/homepage/bppots.jpg" alt="Pots and Planters" class="image rounded-3">
                     <div class="overlay">
                         <div class="text fs-1">Pots and Planters</div>
                     </div>
@@ -417,7 +423,7 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
                 <div class="image-container">
-                    <img src="assets/bpfertilizer.jpg" alt="Soil and Fertilizers" class="image rounded-3">
+                    <img src="assets/homepage/bpfertilizer.jpg" alt="Soil and Fertilizers" class="image rounded-3">
                     <div class="overlay">
                         <div class="text fs-1">Soil and Fertilizers</div>
                     </div>
@@ -428,30 +434,38 @@
     </div>
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="5000">
-                <img src="assets/carouselimage1.jpg" class="d-block w-100" alt="..." oncontextmenu="return false;">
-            </div>
-            <div class="carousel-item" data-bs-interval="5000">
-                <img src="assets/carouselimage2.jpg" class="d-block w-100" alt="..." oncontextmenu="return false;">
-            </div>
-            <div class="carousel-item" data-bs-interval="5000">
-                <img src="assets/carouselimage3.jpg" class="d-block w-100" alt="..." oncontextmenu="return false;">
-            </div>
+            <a class="text-decoration-none" style="color: var(--shade5);" href="plants.html">
+                <div class="carousel-item active" data-bs-interval="5000">
+                    <img src="assets/homepage/carouselimage1.jpg" class="d-block w-100" alt="..."
+                        oncontextmenu="return false;">
+                </div>
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="assets/homepage/carouselimage2.jpg" class="d-block w-100" alt="..."
+                        oncontextmenu="return false;">
+                </div>
+                <div class="carousel-item" data-bs-interval="5000">
+                    <img src="assets/homepage/carouselimage3.jpg" class="d-block w-100" alt="..."
+                        oncontextmenu="return false;">
+                </div>
+            </a>
         </div>
     </div>
     <div class="container my-5 ">
         <h1 class="my-5">Why <span style="color: var(--shade2);">Us</span>?</h1>
         <div class="row text-center">
             <div class="col-lg-4 col-sm-12 mb-4">
-                <img src="assets/packageicon.png" width="100px" oncontextmenu="return false;" draggable="false">
+                <img src="assets/homepage/packageicon.png" width="100px" oncontextmenu="return false;"
+                    draggable="false">
                 <h4 class="my-4">Secure and<br>Recyclable Packaging</h4>
             </div>
             <div class="col-lg-4 col-sm-12 mb-4">
-                <img src="assets/productreturn.png" width="100px" oncontextmenu="return false;" draggable="false">
+                <img src="assets/homepage/productreturn.png" width="100px" oncontextmenu="return false;"
+                    draggable="false">
                 <h4 class="my-4">Free Replacements<br>if Damaged</h4>
             </div>
             <div class="col-lg-4 col-sm-12 mb-4">
-                <img src="assets/wateringcan.png" width="100px" oncontextmenu="return false;" draggable="false">
+                <img src="assets/homepage/wateringcan.png" width="100px" oncontextmenu="return false;"
+                    draggable="false">
                 <h4 class="my-4">Free Watering<br>Cans</h4>
             </div>
         </div>
@@ -472,10 +486,10 @@
                 <div class="item" style="width:300px">
                     <div class="card h-100 text-center bg-transparent border-0">
                         <div class="card-header bg-transparent d-flex justify-content-center" style="border: none;">
-                            <img src="assets/testimonial1.jpg" class="rounded-circle" style="width: 100px;">
+                            <img src="assets/homepage/testimonial1.jpg" class="rounded-circle" style="width: 100px;">
                         </div>
                         <div class="card-body">
-                            <p class="card-text list-group-item text-justify">Ever since I discovered
+                            <p class="card-text list-group-item">Ever since I discovered
                                 Tree Story, my garden has transformed into a lush paradise. The quality of the plants is
                                 exceptional, and they always arrive in perfect condition. My favorite is the rare orchid
                                 I purchased; it's thriving beautifully!
@@ -488,7 +502,7 @@
                 <div class="item" style="width:300px">
                     <div class="card h-100 text-center bg-transparent border-0">
                         <div class="card-header bg-transparent d-flex justify-content-center" style="border: none;">
-                            <img src="assets/testimonial2.jpg" class="rounded-circle" style="width: 100px;">
+                            <img src="assets/homepage/testimonial2.jpg" class="rounded-circle" style="width: 100px;">
                         </div>
                         <div class="card-body">
                             <p class="card-text list-group-item">The premium soil mix from
@@ -504,7 +518,7 @@
                 <div class="item" style="width:300px">
                     <div class="card h-100 text-center bg-transparent border-0">
                         <div class="card-header bg-transparent d-flex justify-content-center" style="border: none;">
-                            <img src="assets/testimonial3.jpg" class="rounded-circle" style="width: 100px;">
+                            <img src="assets/homepage/testimonial3.jpg" class="rounded-circle" style="width: 100px;">
                         </div>
                         <div class="card-body">
                             <p class="card-text list-group-item">I am absolutely in love
@@ -520,7 +534,7 @@
                 <div class="item" style="width:300px">
                     <div class="card h-100 text-center bg-transparent border-0">
                         <div class="card-header bg-transparent d-flex justify-content-center" style="border: none;">
-                            <img src="assets/testimonial4.jpg" class="rounded-circle" style="width: 100px;">
+                            <img src="assets/homepage/testimonial4.jpg" class="rounded-circle" style="width: 100px;">
                         </div>
                         <div class="card-body">
                             <p class="card-text list-group-item">Tree Story's slow-release fertilizer has completely
@@ -536,19 +550,20 @@
     </div>
     <div class="container my-5">
         <h2 class="mb-5">About <span style="color: var(--shade2);">Us</span></h2>
-        <p>Tree Story is India's leading and most trusted online plant nursery, dedicated to fulfilling all your
+        <p class="text-justify">Tree Story is India's leading and most trusted online plant nursery, dedicated to
+            fulfilling all your
             gardening needs. Our online nursery offers an extensive range of high-quality exotic indoor plants, outdoor
             plants, flowering plants, and succulents. Additionally, Tree Story specializes in organic vegetable, herb,
             and flower seeds. We also provide trendy, premium planters, top-notch soil and fertilizers, and a
             comprehensive selection of gardening tools essential for every home gardener.
         </p>
-        <p>
+        <p class="text-justify">
             At Tree Story, we believe we are more than just a garden store; we are your partner in your gardening
             journey. We understand that plants help people grow, and we are committed to nurturing this growth. We
             embrace the magic of cultivating plants, discovering our inner selves in the process, and cherishing moments
             like your first new leaf, your first bloom, or your first sprouted seed.
         </p>
-        <p>
+        <p class="text-justify">
             Tree Story takes pride in being more than just an online garden store or plant nursery. We are your trusted
             friend, dedicated to helping both you and your garden thrive. With our lifetime gardening support, we are
             here to guide you through all your gardening adventures.
@@ -557,7 +572,7 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-lg-6 text-center">
-                <img src="assets/joinclub.jpeg" class="img-fluid rounded-4 joinimage" style="width: 300px;">
+                <img src="assets/homepage/joinclub.jpeg" class="img-fluid rounded-4 joinimage" style="width: 300px;">
             </div>
             <div class="col-lg-6 d-flex justify-content-center align-items-center pt-5">
                 <div class="row row-cols-1">
@@ -679,7 +694,7 @@
                     <hr class="mb-3 mt-0 d-inline-block mx-auto"
                         style="width: 60px; background-color: var(--shade5); height: 3px" />
                     <p>
-                        <a href="#" class="text-white" style="text-decoration: none;">Plants</a>
+                        <a href="plants.html" class="text-white" style="text-decoration: none;">Plants</a>
                     </p>
                     <p>
                         <a href="#!" class="text-white" style="text-decoration: none;">Seeds</a>
@@ -720,8 +735,19 @@
             </div>
         </div>
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-            © 2024 Copyright:
-            <a class="text-white text-decoration-none" href="index.html">Tree Story</a>
+            Copyright © 2024 <a class="text-white text-decoration-none" href="index.html">
+                Tree Story.</a> All rights reserved.
+        </div>
+
+        <div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0.2);">
+            <sub>The company featured here is entirely fictional. It's been created solely to showcase the
+                functionality and features of our website. We hope you find the demo useful and informative! And the images used entirely are generated using AI.</sub>
+        </div>
+
+        <div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0.2);">
+            <sub>Designed and Developed with &#10084; by <a href="https://megh2711.github.io/meghthebaadal.com/"
+                    style="text-decoration: none; color: #fff;"><b>Megh
+                        Patel</b></a></sub>
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
